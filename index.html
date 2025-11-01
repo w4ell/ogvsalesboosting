@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIESEC oGV Sales Training - Boost Your Calling Skills! 🚀</title>
+    <style>
+        :root {
+            --aiesec-blue: #037EF3;
+            --aiesec-orange: #F85A40;
+            --purple: #6C63FF;
+            --pink: #FF6B9D;
+            --teal: #4ECDC4;
+            --bg-light: #F8F9FA;
+            --text-dark: #2C3E50;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: var(--text-dark);
+        }
+
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.3);
+            z-index: 1000;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--aiesec-blue), var(--teal));
+            transition: width 0.4s ease;
+            box-shadow: 0 0 10px rgba(3, 126, 243, 0.5);
+            width: 6.66%;
+        }
+
+        .presentation-container {
+            width: 100%;
+            max-width: 900px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        .slide {
+            display: none;
+            padding: 60px 50px;
+            min-height: 600px;
+        }
+
+        .slide.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .slide-title {
+            font-size: 2.5em;
+            font-weight: 800;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, var(--aiesec-blue), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .slide-subtitle {
+            font-size: 1.4em;
+            color: #555;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .slide-content {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .slide-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .slide-content li {
+            margin-bottom: 15px;
+            padding-left: 35px;
+            position: relative;
+        }
+
+        .slide-content li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--aiesec-blue);
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(3, 126, 243, 0.1), rgba(78, 205, 196, 0.1));
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid var(--aiesec-blue);
+            margin: 25px 0;
+            font-weight: 500;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, var(--aiesec-orange), #ff8c5a);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: 600;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(248, 90, 64, 0.3);
+        }
+
+        .spin-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .spin-item {
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 600;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .spin-s { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .spin-p { background: linear-gradient(135deg, #f093fb, #f5576c); }
+        .spin-i { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+        .spin-n { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+
+        .ritual-steps {
+            counter-reset: step-counter;
+        }
+
+        .ritual-steps li {
+            counter-increment: step-counter;
+            padding-left: 45px;
+        }
+
+        .ritual-steps li:before {
+            content: counter(step-counter);
+            background: var(--aiesec-blue);
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9em;
+        }
+
+        .trigger-box {
+            background: var(--bg-light);
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin: 10px 0;
+            border-left: 4px solid var(--purple);
+        }
+
+        .trigger-box strong {
+            color: var(--purple);
+            font-size: 1.1em;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 50px;
+            background: linear-gradient(135deg, rgba(3, 126, 243, 0.05), rgba(78, 205, 196, 0.05));
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .nav-button {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-button:active {
+            transform: translateY(0);
+        }
+
+        .nav-button:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--aiesec-blue), var(--teal));
+            color: white;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--aiesec-blue);
+            border: 2px solid var(--aiesec-blue);
+        }
+
+        .btn-restart {
+            background: linear-gradient(135deg, var(--aiesec-orange), #ff8c5a);
+            color: white;
+            padding: 10px 20px;
+            font-size: 0.9em;
+        }
+
+        .slide-counter {
+            font-size: 1em;
+            color: #666;
+            font-weight: 600;
+        }
+
+        .welcome-slide {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .welcome-slide .slide-title {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+        }
+
+        .big-emoji {
+            font-size: 4em;
+            margin: 20px 0;
+        }
+
+        .final-slide {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(3, 126, 243, 0.05), rgba(108, 99, 255, 0.05));
+        }
+
+        .action-list {
+            text-align: left;
+            display: inline-block;
+            margin: 20px auto;
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 40px 25px;
+                min-height: 500px;
+            }
+
+            .slide-title {
+                font-size: 1.8em;
+            }
+
+            .welcome-slide .slide-title {
+                font-size: 2.5em;
+            }
+
+            .navigation {
+                padding: 20px 25px;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .nav-button {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+
+            .spin-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div class="presentation-container">
+        <!-- Slide 1: Welcome -->
+        <div class="slide active" id="slide1">
+            <div class="welcome-slide">
+                <div class="big-emoji">🌍🚀</div>
+                <h1 class="slide-title">Welcome AIESECers!</h1>
+                <h2 class="slide-subtitle">We're not just selling - we're changing lives!</h2>
+                <div class="highlight-box" style="margin-top: 40px; font-size: 1.2em;">
+                    Every call = A chance to help someone discover themselves
+                </div>
+                <div>Made By: Wael Ben Mohamed - wael.benmohamed@aiesec.it - waelbm.com</div>
+            </div>  
+        </div>
+
+        <!-- Slide 2: Our Mission Today -->
+        <div class="slide" id="slide2">
+            <h1 class="slide-title">Our Mission Today 🎯</h1>
+            <div class="slide-content">
+                <ul>
+                    <li><strong>Convert Sign-ups → Applicants → Approved (Fee Paid!)</strong></li>
+                    <li>Master the customer flow stages</li>
+                    <li>Build confidence in making calls</li>
+                    <li>Turn rejections into learning moments</li>
+                </ul>
+                <div class="highlight-box" style="margin-top: 30px;">
+                    📊 Remember: Every step in the customer flow brings us closer to creating impact through SDGs!
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Rejection is NOT Personal -->
+        <div class="slide" id="slide3">
+            <h1 class="slide-title">Remember: Rejection is NOT Personal! 💪</h1>
+            <div class="slide-content">
+                <div class="stat-box">
+                    80% of sales reps face call anxiety - You're NOT alone!
+                </div>
+                <ul style="margin-top: 30px;">
+                    <li><strong>Each 'NO' is DATA, not defeat</strong> - Learn from every conversation</li>
+                    <li><strong>They're rejecting the timing, not YOU</strong> - Maybe today isn't their day</li>
+                    <li><strong>Champions make the 101st call after 100 rejections</strong> - Persistence wins!</li>
+                </ul>
+                <div class="highlight-box" style="margin-top: 30px;">
+                    💡 <strong>Pro Tip:</strong> Track your "no's" - you'll see patterns and improve faster!
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: SPIN Selling -->
+        <div class="slide" id="slide4">
+            <h1 class="slide-title">SPIN Selling: Your Secret Weapon 🎯</h1>
+            <div class="slide-content">
+                <p style="margin-bottom: 25px; font-size: 1.1em;">This framework transforms conversations from pushy to helpful:</p>
+                <div class="spin-grid">
+                    <div class="spin-item spin-s">
+                        <div style="font-size: 2em; margin-bottom: 10px;">S</div>
+                        <div><strong>SITUATION</strong></div>
+                        <div style="font-size: 0.9em; margin-top: 10px;">Get to know them<br>"What do you study?<br>Why exchange?"</div>
+                    </div>
+                    <div class="spin-item spin-p">
+                        <div style="font-size: 2em; margin-bottom: 10px;">P</div>
+                        <div><strong>PROBLEM</strong></div>
+                        <div style="font-size: 0.9em; margin-top: 10px;">What's stopping you<br>from taking that<br> next step in your life?</div>
+                    </div>
+                    <div class="spin-item spin-i">
+                        <div style="font-size: 2em; margin-bottom: 10px;">I</div>
+                        <div><strong>IMPLICATION</strong></div>
+                        <div style="font-size: 0.9em; margin-top: 10px;">Show consequences<br>"What if you don't<br>do this?"</div>
+                    </div>
+                    <div class="spin-item spin-n">
+                        <div style="font-size: 2em; margin-bottom: 10px;">N</div>
+                        <div><strong>NEED PAY-OFF</strong></div>
+                        <div style="font-size: 0.9em; margin-top: 10px;">Present solution<br>"How will this change<br>your career?"</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Power Ritual -->
+        <div class="slide" id="slide5">
+            <h1 class="slide-title">Before Every Call: The Power Ritual 🔥</h1>
+            <div class="slide-content">
+                <p style="margin-bottom: 25px; font-size: 1.1em;">Prepare your mindset before dialing:</p>
+                <ul class="ritual-steps">
+                    <li><strong>SMILE for 20 seconds</strong> (science says it works! Your voice sounds different when you smile)</li>
+                    <li><strong>Deep breath</strong> - You're HELPING, not bothering</li>
+                    <li><strong>They NEED you</strong> - they NEED what you're offering, you re not calling random people, these people signed up because they need it, they need YOU </li>
+                    <li><strong>Thousands of AIESECers have done this before you </strong> - they are not better than you, join the legacy!</li>
+
+                </ul>
+                <div class="highlight-box" style="margin-top: 30px;">
+                    🧘 <strong>Bonus:</strong> Stand up while calling! It increases energy and confidence by 30%
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Handling Hangups -->
+        <div class="slide" id="slide6">
+            <h1 class="slide-title">Handling Hangups Like a Pro 📞</h1>
+            <div class="slide-content">
+                <ul>
+                    <li><strong>Quick hangup? They were busy - NOT your fault!</strong> Try again at a different time</li>
+                    <li><strong>Make it conversational, NOT scripted</strong> - Be genuine and human</li>
+                    <li><strong>Ask open-ended questions</strong> - Get them talking about themselves</li>
+                    <li><strong>Listen MORE than you talk (80/20 rule!)</strong> - Two ears, one mouth for a reason</li>
+                </ul>
+                <div class="stat-box" style="margin-top: 30px;">
+                    ⏰ Best calling times: 10-11 AM &amp; 4-5 PM - People are more relaxed!
+                </div>
+                <div class="highlight-box">
+                    💬 <strong>Opening line:</strong> "Hi [Name]! I'm [Your Name] from AIESEC IN BOlOGNA, also a student here, do you remember AIESEC?(remind them)... I saw you signed up on our website.. Got 2 minutes to chat about your exchange?"
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Mind Triggers -->
+        <div class="slide" id="slide7">
+            <h1 class="slide-title">Mind Triggers That WORK 🧠</h1>
+            <div class="slide-content">
+                <p style="margin-bottom: 20px;">Use these psychological techniques ethically:</p>
+                <div class="trigger-box">
+                    <strong>⚡ URGENCY:</strong> "Spots are filling fast for this project! Only 3 left for the July intake."
+                </div>
+                <div class="trigger-box">
+                    <strong>👑 AUTHORITY:</strong> "We're the world's largest youth organization - 100,000+ students in 120+ countries!"
+                </div>
+                <div class="trigger-box">
+                    <strong>👥 SOCIAL PROOF:</strong> "15 students from your university already went on exchange this year!"
+                </div>
+                <div class="trigger-box">
+                    <strong>🤝 RECIPROCITY:</strong> "I felt the same way before MY exchange. Let me share what changed for me..."
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Money Objection -->
+        <div class="slide" id="slide8">
+            <h1 class="slide-title">Breaking THE Excuse: "I don't have money" 💰</h1>
+            <div class="slide-content">
+                <ul>
+                    <li><strong>Understand their budget first</strong> - "What were you expecting to invest in your development?"</li>
+                    <li><strong>Compare to other programs</strong> - We're competitive! Show the value breakdown</li>
+                    <li><strong>Show payment plans/options</strong> - "You can pay in installments through EXPA"</li>
+                    <li><strong>Show them it's not for nothing</strong> - "That project fee, includes mainly accomodation, assistance, certificat and much more important an amazing experience!"</li>
+                </ul>
+                <div class="highlight-box" style="margin-top: 30px;">
+                    💡 <strong>Reframe the cost:</strong> "It's not an expense, it's an investment in your career. Compare it to a semester abroad - we're 70% cheaper with similar impact!"
+                </div>
+                <div class="stat-box">
+                    🎯 Remember: If they're serious about their future, they'll find a way. Your job is to help them see the value!
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Language Barrier Objection Handling -->
+        <div class="slide" id="slide9">
+            <h1 class="slide-title">"But My English Isn't Good Enough!" 🗣️</h1>
+            <div class="slide-content">
+                <p style="margin-bottom: 20px; font-weight: 600; font-size: 1.2em; color: var(--aiesec-blue);">Turning this objection into an OPPORTUNITY!✨</p>
+                
+                <div class="stat-box" style="margin-bottom: 30px;">
+                    🎯 78% of Italian EPs said their English improved dramatically during exchange!
+                </div>
+                
+                <ul>
+                    <li><strong>"This is exactly WHY you should go!"</strong> - Exchange is the fastest way to improve</li>
+                    <li><strong>"All projects are English-friendly"</strong> - You'll be surrounded by international peers</li>
+                    <li><strong>"You learn by DOING, not just studying"</strong> - Real immersion beats classroom learning</li>
+                    <li><strong>"Your basic English + gestures = communication superpower!"</strong> - You'd be surprised how little you actually need</li>
+                </ul>
+                
+                <div class="trigger-box" style="margin-top: 20px;">
+                    <strong>🚀 Reframe Their Thinking:</strong> "Don't think of it as 'my English isn't good enough' - think of it as 'this is my chance to become fluent while making a real impact!'"
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Remember Our WHY -->
+        <div class="slide" id="slide10">
+            <h1 class="slide-title">Remember Our WHY 🌟</h1>
+            <div class="slide-content">
+                <p style="margin-bottom: 25px; font-size: 1.2em; font-weight: 600; color: var(--aiesec-blue);">This is bigger than sales - this is about IMPACT:</p>
+                <ul>
+                    <li><strong>We're enabling youth to explore the world</strong> - Opening doors they didn't know existed</li>
+                    <li><strong>Each approved EP = SDG impact realized</strong> - Real contribution to global goals</li>
+                    <li><strong>You're building global citizens</strong> - People who think beyond borders</li>
+                    <li><strong>Your work creates ripple effects for years</strong> - They'll pay it forward</li>
+                    <li><strong>This is leadership development - for THEM and YOU!</strong> - You're growing with every call</li>
+                </ul>
+                <div class="highlight-box" style="margin-top: 30px; text-align: center; font-size: 1.2em;">
+                    🌍 Every conversation matters. Every connection counts. Every exchange changes lives.
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: Call to Action -->
+        <div class="slide" id="slide11">
+            <h1 class="slide-title">Your Call-to-Action Today! 🎯</h1>
+            <div class="slide-content">
+                <p style="margin-bottom: 25px; font-size: 1.2em; font-weight: 600;">Let's make these commitments together:</p>
+                <div class="action-list">
+                    <ul style="font-size: 1.15em;">
+                        <li><strong>Call sign ups in 24hour</strong> - Small move can make a huge difference</li>
+                        <li><strong>Use SPIN in your next 3 conversations</strong> - Practice makes perfect</li>
+                        <li><strong>Support each other - We're ONE TEAM!</strong> - Check in on your teammates</li>
+                        <li><strong>Believe in yourself - You've got this!</strong> - Your mindset determines your results</li>
+                    </ul>
+                </div>
+                <div class="highlight-box" style="text-align: center;">
+                    💬 <strong>Share your first win in the team chat - We're all rooting for you!</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 12: Final Motivation -->
+        <div class="slide" id="slide12">
+            <div class="final-slide">
+                <div class="big-emoji">🚀🌍💙</div>
+                <h1 class="slide-title" style="font-size: 3em;">You Are AIESEC!</h1>
+                <div class="slide-content" style="text-align: center;">
+                    <div class="highlight-box" style="font-size: 1.3em; margin: 30px 0;">
+                        "Peace and fulfillment of humankind's potential"
+                    </div>
+                    <p style="font-size: 1.2em; margin: 20px 0; font-weight: 600;">
+                        Every call brings us closer to our vision
+                    </p>
+                    <p style="font-size: 1.2em; margin: 20px 0; font-weight: 600;">
+                        You're not just selling - you're creating leaders
+                    </p>
+                    <p style="font-size: 1.2em; margin: 20px 0; font-weight: 600;">
+                        Together, we're unstoppable!
+                    </p>
+                    <div class="stat-box" style="margin-top: 40px; font-size: 1.5em;">
+                        Made for my beautiful team 💙 by: Wael
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="navigation">
+            <button class="nav-button btn-secondary" id="prevBtn">← Previous</button>
+            <div style="display: flex; gap: 15px; align-items: center;">
+                <button class="nav-button btn-restart" id="restartBtn">🔄 Restart</button>
+                <span class="slide-counter" id="slideCounter">Slide 1 of 15</span>
+            </div>
+            <button class="nav-button btn-primary" id="nextBtn">Next →</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 12;
+        const slides = document.querySelectorAll('.slide');
+
+        function updateSlideDisplay() {
+            // Hide all slides
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+
+            // Show current slide
+            document.getElementById(`slide${currentSlide}`).classList.add('active');
+
+            // Update counter
+            document.getElementById('slideCounter').textContent = `Slide ${currentSlide} of ${totalSlides}`;
+
+            // Update progress bar
+            const progress = (currentSlide / totalSlides) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+
+            // Update button states
+            document.getElementById('prevBtn').disabled = currentSlide === 1;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides;
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function changeSlide(direction) {
+            const newSlide = currentSlide + direction;
+            if (newSlide >= 1 && newSlide <= totalSlides) {
+                currentSlide = newSlide;
+                updateSlideDisplay();
+            }
+        }
+
+        function restartPresentation() {
+            currentSlide = 1;
+            updateSlideDisplay();
+        }
+
+        // Event listeners
+        document.getElementById('prevBtn').addEventListener('click', () => changeSlide(-1));
+        document.getElementById('nextBtn').addEventListener('click', () => changeSlide(1));
+        document.getElementById('restartBtn').addEventListener('click', restartPresentation);
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                if (currentSlide < totalSlides) {
+                    changeSlide(1);
+                }
+            } else if (e.key === 'ArrowLeft') {
+                if (currentSlide > 1) {
+                    changeSlide(-1);
+                }
+            } else if (e.key === 'Home') {
+                restartPresentation();
+            }
+        });
+
+        // Initialize
+        updateSlideDisplay();
+    </script>
+</body>
+</html>
